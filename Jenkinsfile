@@ -65,6 +65,15 @@ pipeline {
                     -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml'''
                 }
             }
+
+            stage('Qulity Gate') {
+                steps {
+                    echo "Waiting for SonarQube Quality Gate"
+                    timeout(time: 10, unit: 'MINUTES') {
+                        waitForQualityGate abortPipeline: true
+                    }
+                }
+            }
         }
     }
 }
