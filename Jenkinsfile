@@ -66,7 +66,10 @@ pipeline {
                 }
             }
 
-            stage('Qulity Gate') {
+            
+        }
+
+        stage('Qulity Gate') {
                 steps {
                     echo "Waiting for SonarQube Quality Gate"
                     timeout(time: 10, unit: 'MINUTES') {
@@ -74,6 +77,5 @@ pipeline {
                     }
                 }
             }
-        }
     }
 }
