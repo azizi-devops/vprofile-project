@@ -1,3 +1,8 @@
+def COLOR_MAP = [
+    'SUCCESS': 'good',
+    'FAILURE': 'danger'
+
+]
 pipeline {
     agent any
     tools {
@@ -87,7 +92,7 @@ pipeline {
                               nexusUrl: "${NEXUSIP}:${NEXUSPORT}",
                               groupId: 'QA',
                               version: "${env.BUILD_ID}-${BUILD_TIMESTAMP}",
-                              repository: "${RELEASE_REPO}",
+                              repository: "${RELEASE_REPO},
                               credentialsId: "${NEXUS_LOGIN}",
                               artifacts: [
                                 [ artifactId: 'vprofile',
@@ -99,6 +104,16 @@ pipeline {
                            )
                     }
                     
+                }
+            }
+
+
+            post {
+                always {
+                    echo "Slack Notification"
+                    slackSend channel: '#cicd',
+                              color: COLOR_MAP[currentBuild.currentResult],
+                              message: "*${currentBuild.currentResult}:* Job '${env.JOB_NAME}' build (${env.BUILD_NUMBER}) , \n more info at ${env.BUILD_URL} " ,
                 }
             }
     }
