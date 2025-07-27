@@ -114,7 +114,7 @@ pipeline {
         stage('Build App Image') {
             steps {
                 script {
-                    dockerImage = docker.build( "${EcrRegistry}/${IMAGE_NAME}" + "${BUILD_NUMBER}" , "./Docker-files/app/multistage" )
+                    dockerImage = docker.build( "${EcrRegistry}/${IMAGE_NAME}" , "./Docker-files/app/multistage" )
                 }
             }
 
