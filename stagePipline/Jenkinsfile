@@ -24,7 +24,7 @@ pipeline {
         SONARSCANNER = 'sonarscanner'
         RegistryCredential = 'ecr:us-east-1:awscred2'
         EcrRegistry = '688567289752.dkr.ecr.us-east-1.amazonaws.com'
-        IMAGE_NAME = 'vprofile-web-app'
+        IMAGE_NAME = 'vprofile'
         vprofileRegistry = 'https://688567289752.dkr.ecr.us-east-1.amazonaws.com'
 
     }
