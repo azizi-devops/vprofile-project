@@ -27,7 +27,7 @@ pipeline {
         IMAGE_NAME = 'vprofile-web-app'
         vprofileRegistry = 'https://688567289752.dkr.ecr.us-east-1.amazonaws.com'
         CLUSTER_NAME = 'vprofile-cluster'
-        SERVICE_NAME = 'vprofile-task-service-kwdifwys'
+        SERVICE_NAME = 'vprofile-task-2-service-moyvgwbf'
     }
 
     
