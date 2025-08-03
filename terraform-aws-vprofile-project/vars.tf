@@ -72,7 +72,7 @@ variable "rmquser" {
 
 variable "rmqpass" {
   description = "Password for the rabbitMQ"
-  default     = "Hani5760009281*"
+  default     = "RabbitmqPassword12345"
 }
 
 
@@ -135,4 +135,5 @@ variable "privSub3CIDR" {
 variable "PROJECT" {
   description = "Project name for tagging resources"
   default     = "vprofile"
+
 }
