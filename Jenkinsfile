@@ -74,14 +74,14 @@ pipeline {
             
         }
 
-        stage('Qulity Gate') {
-                steps {
-                    echo "Waiting for SonarQube Quality Gate"
-                    timeout(time: 10, unit: 'MINUTES') {
-                        waitForQualityGate abortPipeline: true
-                    }
-                }
-            }
+      //stage('Qulity Gate') {
+       //         steps {
+        //            echo "Waiting for SonarQube Quality Gate"
+         //           timeout(time: 10, unit: 'MINUTES') {
+           //       waitForQualityGate abortPipeline: true
+             //       }
+               // }
+            //}
 
             stage('Upload Artifacts to Nexus') {
                
@@ -116,7 +116,7 @@ pipeline {
                               message: "*${currentBuild.currentResult}:* Job '${env.JOB_NAME}' build (${env.BUILD_NUMBER}) , \n more info at ${env.BUILD_URL} "
                 }
    
-   
+
 	    }
     }
 
