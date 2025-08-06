@@ -74,14 +74,14 @@ pipeline {
             
         }
 
-      //stage('Qulity Gate') {
-       //         steps {
-        //            echo "Waiting for SonarQube Quality Gate"
-         //           timeout(time: 10, unit: 'MINUTES') {
-           //       waitForQualityGate abortPipeline: true
-             //       }
-               // }
-            //}
+      stage('Qulity Gate') {
+                steps {
+                    echo "Waiting for SonarQube Quality Gate"
+                    timeout(time: 10, unit: 'MINUTES') {
+                  waitForQualityGate abortPipeline: true
+                    }
+                }
+            }
 
             stage('Upload Artifacts to Nexus') {
                
