@@ -110,7 +110,7 @@ pipeline {
 
             stage('Ansible deploy to stage') {
                 steps {
-                    
+
                  
                  ansiblePlaybook([
                  playbook: 'ansible/site.yml',
@@ -118,6 +118,7 @@ pipeline {
                  installation: 'ansible',
                  credentialsId: 'applogin',
                  disableHostKeyChecking: true,
+                 colorized: true,
                  extraVars: [
                     USER: "${NEXUS_USER}",
                     PASS: "${NEXUS_PASS}",
@@ -128,7 +129,7 @@ pipeline {
 			        build: "${env.BUILD_ID}",
                     artifactid: "vproapp",
 			        vprofile_version: "vproapp-${env.BUILD_ID}-${env.BUILD_TIMESTAMP}.war"]
-                 colorized: true])
+                 ])
 }
                 }
             
