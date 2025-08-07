@@ -110,6 +110,7 @@ pipeline {
 
             stage('Ansible deploy to stage') {
                 steps {
+                    
                  
                  ansiblePlaybook([
                  playbook: 'ansible/site.yml',
