@@ -114,9 +114,9 @@ pipeline {
                  ansiblePlaybook([
                  playbook: 'ansible/site.yml',
                  inventory: 'ansible/stage.inventory',
-                 installation: 'ansible'
+                 installation: 'ansible',
                  credentialsId: 'applogin',
-                 disableHostKeyChecking: true
+                 disableHostKeyChecking: true,
                  extraVars: [
                     USER: "${NEXUS_USER}",
                     PASS: "${NEXUS_PASS}",
