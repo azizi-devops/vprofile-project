@@ -13,7 +13,7 @@ pipeline {
     environment {
         SNAP_REPO = 'vprofile-snapshot'
 		NEXUS_USER = 'admin'
-		NEXUS_PASS = credentials ( 'nexuspass' )
+		NEXUS_PASS = credentials( 'nexuspass' )
 		RELEASE_REPO = 'vprofile-release'
 		CENTRAL_REPO = 'vpro-maven-central'
 		NEXUSIP = '172.31.82.94'
@@ -127,8 +127,8 @@ pipeline {
 			        groupid: "QA",
 			        time: "${env.BUILD_TIMESTAMP}",
 			        build: "${env.BUILD_ID}",
-                    artifactid: "vproapp",
-			        vprofile_version: "vproapp-${env.BUILD_ID}-${env.BUILD_TIMESTAMP}.war"]
+                    artifactid: "vprofile",
+			        vprofile_version: "vprofile-${env.BUILD_ID}-${env.BUILD_TIMESTAMP}.war"]
                  ])
 }
                 }
