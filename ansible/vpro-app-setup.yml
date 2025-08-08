@@ -1,3 +1,6 @@
+- name: Install tomcat 10 on Ubuntu
+  
+
 
 - name: Setup Tomcat10 & Deploy Artifact
   hosts: appsrvgrp
@@ -5,6 +8,19 @@
   vars:
     timestamp: "{{ansible_date_time.date}}_{{ansible_date_time.hour}}_{{ansible_date_time.minute}}"
   tasks:
+    - name: Install tomcat 10 on Ubuntu
+      apt:
+        name: 
+          - tomcat10
+          - tomcat10-admin
+          - tomcat10-docs
+          - tomcat10-common
+        state: present
+        update_cache: yes
+      tags:
+       - install
+
+
     - name: Download latest VProfile.war from nexus
       get_url:
         url: "http://{{USER}}:{{PASS}}@{{nexusip}}:8081/repository/{{reponame}}/{{groupid}}/{{artifactid}}/{{build}}-{{time}}/{{vprofile_version}}"
