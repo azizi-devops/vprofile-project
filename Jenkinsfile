@@ -122,7 +122,7 @@ pipeline {
                  colorized: true,
                  extraVars: [
                     USER: "admin",   //"${env.NEXUS_USER}",
-                    PASS: "${env.NEXUS_PASS}",
+                    PASS: "admin123"                //"${env.NEXUS_PASS}",
 			        nexusip: "172.31.82.94",   //"${env.NEXUSIP}",
 			        reponame: "vprofile-release",    //"${env.RELEASE_REPO}",
 			        groupid: "QA",
