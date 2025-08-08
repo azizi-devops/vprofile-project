@@ -8,6 +8,14 @@
   vars:
     timestamp: "{{ansible_date_time.date}}_{{ansible_date_time.hour}}_{{ansible_date_time.minute}}"
   tasks:
+
+    - name: Install JDK on Ubuntu 
+      apt:
+        name: openjdk-17-jdk
+        state: present
+        update_cache: yes
+      when: ansible_distribution == 'Ubuntu' 
+
     - name: Install tomcat 10 on Ubuntu
       apt:
         name: 
