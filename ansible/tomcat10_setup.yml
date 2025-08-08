@@ -2,7 +2,7 @@
   hosts: appsrvgrp
   become: yes
   vars:
-    tom_url: https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.26/bin/apache-tomcat-10.1.26-deployer.tar.gz
+    tom_url: https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.1/bin/apache-tomcat-9.0.1-deployer.tar.gz
 #https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.0-M1/bin/apache-tomcat-10.0.0-M1-deployer.tar.gz
   tasks:
     - name: Install JDK on Centos 6/7
@@ -33,16 +33,16 @@
         name: tomcat
         group: tomcat
         shell: /bin/nologin
-        home: /usr/local/tomcat10
+        home: /usr/local/tomcat9
 
     - file:
-        path: /tmp/tomcat10
+        path: /tmp/tomcat9
         state: directory
 
     - name: Extract tomcat
       unarchive:
-        src: /tmp/tomcat-10.tar.gz
-        dest: /tmp/tomcat10/
+        src: /tmp/tomcat-9.tar.gz
+        dest: /tmp/tomcat9/
         remote_src: yes
         list_files: yes
       register: unarchive_info
@@ -50,15 +50,15 @@
     - debug:
         msg: "{{unarchive_info.files[0].split('/')[0]}}"
 
-    - name: Synchronize /tmp/tomcat10/tomcat_cont /usr/local/tomcat10.
+    - name: Synchronize /tmp/tomcat9/tomcat_cont /usr/local/tomcat9.
       synchronize:
-        src: "/tmp/tomcat10/{{unarchive_info.files[0].split('/')[0]}}/"
-        dest: /usr/local/tomcat10/
+        src: "/tmp/tomcat9/{{unarchive_info.files[0].split('/')[0]}}/"
+        dest: /usr/local/tomcat9/
       delegate_to: "{{ inventory_hostname }}"
 
-    - name: Change ownership of /usr/local/tomcat10
+    - name: Change ownership of /usr/local/tomcat9
       file:
-        path: /usr/local/tomcat10
+        path: /usr/local/tomcat9
         owner: tomcat
         group: tomcat
         recurse: yes
@@ -67,21 +67,21 @@
       template:
          src: templates/epel7-svcfile.j2
          dest: /etc/systemd/system/tomcat.service
-         mode: "a+x"
+         mode: "0644"
       when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7'      
 
     - name: Setup tomcat SVC file on Centos 6
       template:
          src: templates/epel6-svcfile.j2
          dest: /etc/init.d/tomcat
-         mode: "a+x"
+         mode: "0644"
       when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6'
 
     - name: Setup tomcat SVC file on ubuntu 14/15
       template:
          src: templates/ubuntu14_15-svcfile.j2
          dest: /etc/init.d/tomcat
-         mode: "a+x"
+         mode: "0644"
       when: ansible_distribution == 'Ubuntu' and ansible_distribution_major_version < '16'
 
     - name: Setup Tomcat systemd service file on Ubuntu 16+
@@ -106,7 +106,7 @@
 
 
 
-    - name: Start & Enable TOmcat 10
+    - name: Start & Enable TOmcat 9
       service:
         name: tomcat
         state: started
