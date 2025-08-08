@@ -111,7 +111,7 @@ pipeline {
                 steps {
 
                  ansiblePlaybook([
-                 playbook: 'ansible/site.yml',
+                 playbook: 'ansible/vpro-app-setup',
                  inventory: 'ansible/stage.inventory',
                  installation: 'ansible',
                  credentialsId: 'applogin',
