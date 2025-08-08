@@ -21,7 +21,7 @@
     - name: Download Tomcat Tar Ball/Binaries
       get_url:
         url: "{{tom_url}}"
-        dest: /tmp/tomcat-10.tar.gz
+        dest: /tmp/tomcat-9.tar.gz
 
     - name: Add tomcat group
       group:
