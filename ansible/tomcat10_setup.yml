@@ -50,7 +50,7 @@
     - debug:
         msg: "{{unarchive_info.files[0].split('/')[0]}}"
 
-    - name: Synchronize /tmp/tomcat10/tomcat_cont /usr/local/tomcat8.
+    - name: Synchronize /tmp/tomcat10/tomcat_cont /usr/local/tomcat10.
       synchronize:
         src: "/tmp/tomcat10/{{unarchive_info.files[0].split('/')[0]}}/"
         dest: /usr/local/tomcat10/
