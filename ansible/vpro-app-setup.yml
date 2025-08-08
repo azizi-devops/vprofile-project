@@ -1,12 +1,10 @@
-- name: Install tomcat 10 on Ubuntu
-  
-
-
 - name: Setup Tomcat10 & Deploy Artifact
   hosts: appsrvgrp
   become: yes
+  
   vars:
     timestamp: "{{ansible_date_time.date}}_{{ansible_date_time.hour}}_{{ansible_date_time.minute}}"
+  
   tasks:
 
     - name: Install JDK on Ubuntu 
