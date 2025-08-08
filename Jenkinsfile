@@ -107,7 +107,6 @@ pipeline {
                     
                 }
 
-
             stage('Ansible deploy to stage') {
                 steps {
 
