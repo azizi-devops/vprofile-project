@@ -90,14 +90,7 @@
        - name: Start tomcat svc
          command: systemctl start tomcat10.service
 
-    - name: Change ownership of /usr/local/tomcat9
-      file:
-        path: /var/lib/tomcat10
-        owner: tomcat
-        group: tomcat
-        recurse: yes
-    
-    
+      
     - name: Reload systemd daemon
       command: systemctl daemon-reload
       when: deploy_info.changed
