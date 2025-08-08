@@ -106,13 +106,13 @@ pipeline {
                     }
                     
                 }
-                
+
 
             stage('Ansible deploy to stage') {
                 steps {
 
                  ansiblePlaybook([
-                 playbook: 'ansible/vpro-app-setup',
+                 playbook: 'ansible/vpro-app-setup.yml',
                  inventory: 'ansible/stage.inventory',
                  installation: 'ansible',
                  credentialsId: 'applogin',
