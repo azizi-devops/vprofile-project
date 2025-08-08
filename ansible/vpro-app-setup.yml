@@ -20,13 +20,10 @@
        - deploy
 
     - name: Stop tomcat svc
-      service:
-        name: tomcat
-        state: stopped
-      tags:
-       - deploy
-
+      command: systemctl stop tomcat10.service
+    
     - name: Try Backup and Deploy
+
       block:
       - name: Archive ROOT dir with timestamp
         archive:
@@ -70,9 +67,7 @@
 
       rescue:
        - name: Start tomcat svc
-         service:
-          name: tomcat
-          state: started
+         command: systemctl start tomcat10.service
 
     - name: Change ownership of /usr/local/tomcat9
       file:
@@ -88,9 +83,7 @@
 
 
     - name: Start tomcat svc
-      service:
-        name: tomcat
-        state: started
+      command: systemctl start tomcat10.service
       when: deploy_info.changed
       tags:
        - deploy
