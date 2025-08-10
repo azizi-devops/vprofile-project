@@ -34,6 +34,7 @@ pipeline {
 
     stages {
         
+
         
             stage('Deploy to Stage Bean'){
           steps {
