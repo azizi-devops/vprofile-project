@@ -34,8 +34,6 @@ pipeline {
 
     stages {
         
-
-
             stage('Deploy to Stage Bean'){
           steps {
             withAWS(credentials: 'awsbeancreds', region: 'us-east-1') {
