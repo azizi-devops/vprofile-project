@@ -1,4 +1,4 @@
-def buildNumber = Jenkins.instance.getItem('vpro-beam-cicd').lastSuccessfulBuild.number
+def buildNumber = Jenkins.instance.getItem('vpro-bean-cicd-stage').lastSuccessfulBuild.number
 
 def COLOR_MAP = [
     'SUCCESS': 'good',
@@ -35,7 +35,7 @@ pipeline {
     stages {
         
 
-        
+
             stage('Deploy to Stage Bean'){
           steps {
             withAWS(credentials: 'awsbeancreds', region: 'us-east-1') {
